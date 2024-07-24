@@ -25,6 +25,11 @@ public class LibraryService {
         return libraryRepository.findAll();
     }
 
+    public Library findById(Long id) {
+        return libraryRepository.findById(id).orElseThrow(() ->
+                new RuntimeException("Library not found. ID: " + id));
+    }
+
     public Library update(Library library) {
         return libraryRepository.save(library);
     }

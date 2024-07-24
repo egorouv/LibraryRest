@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
+@RequestMapping("/library")
 public class LibraryController {
 
     private final LibraryService libraryService;
@@ -21,7 +22,7 @@ public class LibraryController {
         return new ResponseEntity<>(libraryService.create(dto), HttpStatus.OK);
     }
 
-    @GetMapping("/library")
+    @GetMapping
     public ResponseEntity<List<Library>> findAll() {
         return new ResponseEntity<>(libraryService.findAll(), HttpStatus.OK);
     }
