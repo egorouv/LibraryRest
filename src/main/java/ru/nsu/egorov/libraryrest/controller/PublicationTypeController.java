@@ -33,7 +33,7 @@ public class PublicationTypeController {
     }
 
     @DeleteMapping("/{id}")
-    public HttpStatus delete(Long id) {
+    public HttpStatus delete(@PathVariable Long id) {
         publicationTypeService.delete(id);
         return HttpStatus.OK;
     }

@@ -33,7 +33,7 @@ public class AuthorsController {
     }
 
     @DeleteMapping("/{id}")
-    public HttpStatus delete(Long id) {
+    public HttpStatus delete(@PathVariable Long id) {
         authorsService.delete(id);
         return HttpStatus.OK;
     }
