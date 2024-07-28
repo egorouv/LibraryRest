@@ -28,6 +28,11 @@ public class LibraryWorkersService {
         return libraryWorkersRepository.findAll();
     }
 
+    public LibraryWorkers findById(Long id) {
+        return libraryWorkersRepository.findById(id).orElseThrow(() ->
+                new RuntimeException("LibraryWorkers not found. ID: " + id));
+    }
+
     public LibraryWorkers update(LibraryWorkers libraryWorkers) {
         return libraryWorkersRepository.save(libraryWorkers);
     }

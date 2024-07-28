@@ -30,6 +30,11 @@ public class ReadersService {
         return readersRepository.findAll();
     }
 
+    public Readers findById(Long id) {
+        return readersRepository.findById(id).orElseThrow(() ->
+                new RuntimeException("Readers not found. ID: " + id));
+    }
+
     public Readers update(Readers readers) {
         return readersRepository.save(readers);
     }
