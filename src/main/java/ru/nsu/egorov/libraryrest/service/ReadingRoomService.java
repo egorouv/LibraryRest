@@ -26,6 +26,11 @@ public class ReadingRoomService {
         return readingRoomRepository.findAll();
     }
 
+    public ReadingRoom findById(Long id) {
+        return readingRoomRepository.findById(id).orElseThrow(() ->
+                new RuntimeException("ReadingRoom not found. ID: " + id));
+    }
+
     public ReadingRoom update(ReadingRoom readingRoom) {
         return readingRoomRepository.save(readingRoom);
     }

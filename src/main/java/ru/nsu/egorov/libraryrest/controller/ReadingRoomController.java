@@ -32,7 +32,7 @@ public class ReadingRoomController {
         return new ResponseEntity<>(readingRoomService.update(readingRoom), HttpStatus.OK);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public HttpStatus delete(@PathVariable Long id) {
         readingRoomService.delete(id);
         return HttpStatus.OK;
