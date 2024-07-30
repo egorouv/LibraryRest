@@ -60,4 +60,8 @@ public class ReadersService {
         return readersRepository.findReadersByDate(startDate, endDate);
     }
 
+    public List<Readers> findReadersByWorker(Date startDate, Date endDate, Integer worker) {
+        return readersRepository.findReadersByWorker(startDate, endDate, worker);
+    }
+
 }

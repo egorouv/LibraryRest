@@ -53,4 +53,16 @@ public interface ReadersRepository extends JpaRepository<Readers, Long> {
             nativeQuery = true)
     List<Readers> findReadersByDate(@Param("startDate") Date startDate, @Param("endDate") Date endDate);
 
+    @Query(value =
+            "select distinct r.* " +
+            "from readers r " +
+            "join issuance i on r.id = i.reader " +
+            "join library_workers lw on i.worker = lw.id " +
+            "where lw.id = :worker " +
+            "and i.issuance_date between :startDate and :endDate",
+            nativeQuery = true)
+    List<Readers> findReadersByWorker(@Param("startDate") Date startDate,
+                                      @Param("endDate") Date endDate,
+                                      @Param("worker") Integer worker);
+
 }

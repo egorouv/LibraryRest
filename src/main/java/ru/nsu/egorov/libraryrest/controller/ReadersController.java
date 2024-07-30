@@ -62,4 +62,12 @@ public class ReadersController {
         return new ResponseEntity<>(readersService.findReadersByDate(startDate, endDate), HttpStatus.OK);
     }
 
+    @GetMapping("/worker")
+    public ResponseEntity<List<Readers>> findReadersByWorker(
+            @RequestParam @DateTimeFormat(pattern = "yyyy-mm-dd") Date startDate,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-mm-dd") Date endDate,
+            @RequestParam Integer worker) {
+        return new ResponseEntity<>(readersService.findReadersByWorker(startDate, endDate, worker), HttpStatus.OK);
+    }
+
 }
