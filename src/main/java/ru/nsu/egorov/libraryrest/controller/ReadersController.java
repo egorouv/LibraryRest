@@ -38,10 +38,19 @@ public class ReadersController {
         return HttpStatus.OK;
     }
 
-    @GetMapping("/")
+    @GetMapping("/category")
     public ResponseEntity<List<Readers>> findReadersByCategory(@RequestParam String category) {
         return new ResponseEntity<>(readersService.findReadersByCategory(category), HttpStatus.OK);
     }
 
+    @GetMapping("/title")
+    public ResponseEntity<List<Readers>> findReadersByTitle(@RequestParam String title) {
+        return new ResponseEntity<>(readersService.findReadersByTitle(title), HttpStatus.OK);
+    }
+
+    @GetMapping("/type")
+    public ResponseEntity<List<Readers>> findReadersByType(@RequestParam String type) {
+        return new ResponseEntity<>(readersService.findReadersByType(type), HttpStatus.OK);
+    }
 
 }

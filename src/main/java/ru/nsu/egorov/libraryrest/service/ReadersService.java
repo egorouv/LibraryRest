@@ -47,4 +47,12 @@ public class ReadersService {
         return readersRepository.findReadersByCategory(category);
     }
 
+    public List<Readers> findReadersByTitle(String title) {
+        return readersRepository.findReadersByTitle(title);
+    }
+
+    public List<Readers> findReadersByType(String type) {
+        return readersRepository.findReadersByType(type);
+    }
+
 }
