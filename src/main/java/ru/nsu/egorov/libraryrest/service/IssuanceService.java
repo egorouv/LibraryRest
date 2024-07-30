@@ -6,6 +6,7 @@ import ru.nsu.egorov.libraryrest.dto.IssuanceDTO;
 import ru.nsu.egorov.libraryrest.entity.Issuance;
 import ru.nsu.egorov.libraryrest.repository.IssuanceRepository;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -43,6 +44,10 @@ public class IssuanceService {
 
     public void delete(Long id) {
         issuanceRepository.deleteById(id);
+    }
+
+    public List<Issuance> findIssuanceByDate(Date startDate, Date endDate) {
+        return issuanceRepository.findIssuanceByDate(startDate, endDate);
     }
 
 }

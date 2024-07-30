@@ -1,6 +1,7 @@
 package ru.nsu.egorov.libraryrest.controller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -8,6 +9,7 @@ import ru.nsu.egorov.libraryrest.dto.IssuanceDTO;
 import ru.nsu.egorov.libraryrest.entity.Issuance;
 import ru.nsu.egorov.libraryrest.service.IssuanceService;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -36,6 +38,13 @@ public class IssuanceController {
     public HttpStatus delete(@PathVariable Long id) {
         issuanceService.delete(id);
         return HttpStatus.OK;
+    }
+
+    @GetMapping("/date")
+    public ResponseEntity<List<Issuance>> findIssuanceByDate(
+            @RequestParam @DateTimeFormat(pattern = "yyyy-mm-dd") Date startDate,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-mm-dd") Date endDate) {
+        return new ResponseEntity<>(issuanceService.findIssuanceByDate(startDate, endDate), HttpStatus.OK);
     }
 
 }
