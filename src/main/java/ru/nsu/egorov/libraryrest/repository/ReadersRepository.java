@@ -6,6 +6,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import ru.nsu.egorov.libraryrest.entity.Readers;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -40,5 +41,16 @@ public interface ReadersRepository extends JpaRepository<Readers, Long> {
                     "where pt.type = :type",
             nativeQuery = true)
     List<Readers> findReadersByType(@Param("type") String type);
+
+    @Query(value =
+            "select r.* " +
+            "from readers r " +
+            "join issuance i on r.id = i.reader " +
+            "join publication p on i.publication = p.id " +
+            "join publication_description pd on p.description = pd.id " +
+            "join publication_title pt on pd.title = pt.id " +
+            "where i.issuance_date between :startDate and :endDate",
+            nativeQuery = true)
+    List<Readers> findReadersByDate(@Param("startDate") Date startDate, @Param("endDate") Date endDate);
 
 }

@@ -6,6 +6,7 @@ import ru.nsu.egorov.libraryrest.dto.ReadersDTO;
 import ru.nsu.egorov.libraryrest.entity.Readers;
 import ru.nsu.egorov.libraryrest.repository.ReadersRepository;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -53,6 +54,10 @@ public class ReadersService {
 
     public List<Readers> findReadersByType(String type) {
         return readersRepository.findReadersByType(type);
+    }
+
+    public List<Readers> findReadersByDate(Date startDate, Date endDate) {
+        return readersRepository.findReadersByDate(startDate, endDate);
     }
 
 }

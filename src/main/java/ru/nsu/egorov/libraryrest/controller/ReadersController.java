@@ -1,6 +1,7 @@
 package ru.nsu.egorov.libraryrest.controller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -8,6 +9,7 @@ import ru.nsu.egorov.libraryrest.dto.ReadersDTO;
 import ru.nsu.egorov.libraryrest.entity.Readers;
 import ru.nsu.egorov.libraryrest.service.ReadersService;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -51,6 +53,13 @@ public class ReadersController {
     @GetMapping("/type")
     public ResponseEntity<List<Readers>> findReadersByType(@RequestParam String type) {
         return new ResponseEntity<>(readersService.findReadersByType(type), HttpStatus.OK);
+    }
+
+    @GetMapping("/date")
+    public ResponseEntity<List<Readers>> findReadersByDate(
+            @RequestParam @DateTimeFormat(pattern = "yyyy-mm-dd") Date startDate,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-mm-dd") Date endDate) {
+        return new ResponseEntity<>(readersService.findReadersByDate(startDate, endDate), HttpStatus.OK);
     }
 
 }
