@@ -1,6 +1,7 @@
 package ru.nsu.egorov.libraryrest.controller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -8,6 +9,7 @@ import ru.nsu.egorov.libraryrest.dto.PublicationDTO;
 import ru.nsu.egorov.libraryrest.entity.Publication;
 import ru.nsu.egorov.libraryrest.service.PublicationService;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -36,6 +38,32 @@ public class PublicationController {
     public HttpStatus delete(@PathVariable Long id) {
         publicationService.delete(id);
         return HttpStatus.OK;
+    }
+
+    @GetMapping("/date-from-lib")
+    public ResponseEntity<List<Publication>> findPublicationByDateFromLibrary(
+            @RequestParam @DateTimeFormat(pattern = "yyyy-mm-dd") Date startDate,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-mm-dd") Date endDate,
+            @RequestParam Integer reader) {
+        return new ResponseEntity<>(publicationService.
+                findPublicationByDateFromLibrary(startDate, endDate, reader),
+                HttpStatus.OK);
+    }
+
+    @GetMapping("/date-not-from-lib")
+    public ResponseEntity<List<Publication>> findPublicationByDateNotFromLibrary(
+            @RequestParam @DateTimeFormat(pattern = "yyyy-mm-dd") Date startDate,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-mm-dd") Date endDate,
+            @RequestParam Integer reader) {
+        return new ResponseEntity<>(publicationService.
+                findPublicationByDateNotFromLibrary(startDate, endDate, reader),
+                HttpStatus.OK);
+    }
+
+    @GetMapping("/library")
+    public ResponseEntity<List<Publication>> findPublicationByLibrary(@RequestParam Integer library,
+                                                                      @RequestParam Integer shelf) {
+        return new ResponseEntity<>(publicationService.findPublicationByLibrary(library, shelf), HttpStatus.OK);
     }
 
 }

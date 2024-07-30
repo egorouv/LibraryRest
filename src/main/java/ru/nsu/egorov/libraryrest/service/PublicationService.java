@@ -6,6 +6,7 @@ import ru.nsu.egorov.libraryrest.dto.PublicationDTO;
 import ru.nsu.egorov.libraryrest.entity.Publication;
 import ru.nsu.egorov.libraryrest.repository.PublicationRepository;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -40,6 +41,18 @@ public class PublicationService {
 
     public void delete(Long id) {
         publicationRepository.deleteById(id);
+    }
+
+    public List<Publication> findPublicationByDateFromLibrary(Date startDate, Date endDate, Integer reader) {
+        return publicationRepository.findPublicationByDateFromLibrary(startDate, endDate, reader);
+    }
+
+    public List<Publication> findPublicationByDateNotFromLibrary(Date startDate, Date endDate, Integer reader) {
+        return publicationRepository.findPublicationByDateNotFromLibrary(startDate, endDate, reader);
+    }
+
+    public List<Publication> findPublicationByLibrary(Integer library, Integer shelf) {
+        return publicationRepository.findPublicationByLibrary(library, shelf);
     }
 
 }
