@@ -38,9 +38,10 @@ public class ReadersController {
         return HttpStatus.OK;
     }
 
-    @GetMapping("/all")
-    public ResponseEntity<List<Readers>> findReaders() {
-        return new ResponseEntity<>(readersService.findReaders(), HttpStatus.OK);
+    @GetMapping("/")
+    public ResponseEntity<List<Readers>> findReadersByCategory(@RequestParam String category) {
+        return new ResponseEntity<>(readersService.findReadersByCategory(category), HttpStatus.OK);
     }
+
 
 }

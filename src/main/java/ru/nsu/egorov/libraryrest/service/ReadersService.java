@@ -43,8 +43,8 @@ public class ReadersService {
         readersRepository.deleteById(id);
     }
 
-    public List<Readers> findReaders() {
-        return readersRepository.findReaders();
+    public List<Readers> findReadersByCategory(String category) {
+        return readersRepository.findReadersByCategory(category);
     }
 
 }
