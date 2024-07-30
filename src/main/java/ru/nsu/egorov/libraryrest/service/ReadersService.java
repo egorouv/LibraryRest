@@ -64,4 +64,8 @@ public class ReadersService {
         return readersRepository.findReadersByWorker(startDate, endDate, worker);
     }
 
+    public List<Readers> findOverdueIssue() {
+        return readersRepository.findOverdueIssue();
+    }
+
 }

@@ -65,4 +65,12 @@ public interface ReadersRepository extends JpaRepository<Readers, Long> {
                                       @Param("endDate") Date endDate,
                                       @Param("worker") Integer worker);
 
+    @Query(value =
+            "select distinct r.* " +
+            "from readers r " +
+            "join issuance i on r.id = i.reader " +
+            "where i.return_date < current_date and i.actual_return_date is null",
+            nativeQuery = true)
+    List<Readers> findOverdueIssue();
+
 }

@@ -70,4 +70,9 @@ public class ReadersController {
         return new ResponseEntity<>(readersService.findReadersByWorker(startDate, endDate, worker), HttpStatus.OK);
     }
 
+    @GetMapping("/overdue")
+    public ResponseEntity<List<Readers>> findOverdueIssue() {
+        return new ResponseEntity<>(readersService.findOverdueIssue(), HttpStatus.OK);
+    }
+
 }
