@@ -33,12 +33,12 @@ public interface ReadersRepository extends JpaRepository<Readers, Long> {
 
     @Query(value =
             "select r.* " +
-                    "from readers r " +
-                    "join issuance i on r.id = i.reader " +
-                    "join publication p on i.publication = p.id " +
-                    "join publication_description pd on p.description = pd.id " +
-                    "join publication_type pt on pd.type = pt.id " +
-                    "where pt.type = :type",
+            "from readers r " +
+            "join issuance i on r.id = i.reader " +
+            "join publication p on i.publication = p.id " +
+            "join publication_description pd on p.description = pd.id " +
+            "join publication_type pt on pd.type = pt.id " +
+            "where pt.type = :type",
             nativeQuery = true)
     List<Readers> findReadersByType(@Param("type") String type);
 
