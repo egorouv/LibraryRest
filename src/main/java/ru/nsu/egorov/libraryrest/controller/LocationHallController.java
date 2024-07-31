@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/location_hall")
+@RequestMapping("/location-hall")
 public class LocationHallController {
 
     private final LocationHallService locationHallService;

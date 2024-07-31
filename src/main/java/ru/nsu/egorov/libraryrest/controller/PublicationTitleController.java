@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/publication_title")
+@RequestMapping("/publication-title")
 public class PublicationTitleController {
 
     private final PublicationTitleService publicationTitleService;

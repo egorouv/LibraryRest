@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/library_workers")
+@RequestMapping("/library-workers")
 public class LibraryWorkersController {
 
     private final LibraryWorkersService libraryWorkersService;

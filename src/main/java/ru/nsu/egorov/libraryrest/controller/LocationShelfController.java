@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/location_shelf")
+@RequestMapping("/location-shelf")
 public class LocationShelfController {
 
     private final LocationShelfService locationShelfService;

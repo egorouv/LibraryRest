@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/location_rack")
+@RequestMapping("/location-rack")
 public class LocationRackController {
 
     private final LocationRackService locationRackService;

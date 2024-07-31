@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/write_off")
+@RequestMapping("/write-off")
 public class WriteOffController {
 
     private final WriteOffService writeOffService;

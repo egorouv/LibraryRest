@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/publication_type")
+@RequestMapping("/publication-type")
 public class PublicationTypeController {
 
     private final PublicationTypeService publicationTypeService;
