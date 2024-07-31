@@ -68,4 +68,8 @@ public class ReadersService {
         return readersRepository.findOverdueIssue();
     }
 
+    public List<Readers> findInactiveReaders(Date startDate, Date endDate) {
+        return readersRepository.findInactiveReaders(startDate, endDate);
+    }
+
 }

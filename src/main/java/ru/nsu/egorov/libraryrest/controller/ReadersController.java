@@ -75,4 +75,11 @@ public class ReadersController {
         return new ResponseEntity<>(readersService.findOverdueIssue(), HttpStatus.OK);
     }
 
+    @GetMapping("/inactive")
+    public ResponseEntity<List<Readers>> findInactiveReaders(
+            @RequestParam @DateTimeFormat(pattern = "yyyy-mm-dd") Date startDate,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-mm-dd") Date endDate) {
+        return new ResponseEntity<>(readersService.findInactiveReaders(startDate, endDate), HttpStatus.OK);
+    }
+
 }

@@ -73,4 +73,14 @@ public interface ReadersRepository extends JpaRepository<Readers, Long> {
             nativeQuery = true)
     List<Readers> findOverdueIssue();
 
+    @Query(value =
+            "select * " +
+            "from readers " +
+            "where id not in " +
+                    "(select reader " +
+                    "from issuance " +
+                    "where issuance_date between :startDate and :endDate)",
+            nativeQuery = true)
+    List<Readers> findInactiveReaders(@Param("startDate") Date startDate, @Param("endDate") Date endDate);
+
 }
