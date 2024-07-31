@@ -38,4 +38,10 @@ public class LibraryWorkersController {
         return HttpStatus.OK;
     }
 
+    @GetMapping("/library")
+    public ResponseEntity<List<LibraryWorkers>> findWorkersByLibrary(
+            @RequestParam Integer room, @RequestParam Integer library) {
+        return new ResponseEntity<>(libraryWorkersService.findWorkersByLibrary(room, library), HttpStatus.OK);
+    }
+
 }

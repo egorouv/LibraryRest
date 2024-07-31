@@ -41,4 +41,8 @@ public class LibraryWorkersService {
         libraryWorkersRepository.deleteById(id);
     }
 
+    public List<LibraryWorkers> findWorkersByLibrary(Integer room, Integer library) {
+        return libraryWorkersRepository.findWorkersByLibrary(room, library);
+    }
+
 }
