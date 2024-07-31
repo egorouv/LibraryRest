@@ -67,4 +67,8 @@ public class PublicationService {
         return publicationRepository.findPublicationByTitle(title);
     }
 
+    public List<Publication> findPublicationByAuthor(String name, String surname) {
+        return publicationRepository.findPublicationByAuthor(name, surname);
+    }
+
 }

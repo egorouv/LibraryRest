@@ -82,4 +82,13 @@ public interface PublicationRepository extends JpaRepository<Publication, Long> 
             nativeQuery = true)
     List<Publication> findPublicationByTitle(@Param("title") String title);
 
+    @Query(value =
+            "select p.* " +
+            "from publication p " +
+            "join publication_description pd on p.description = pd.id " +
+            "join authors a on pd.author = a.id " +
+            "where a.author_name = :name and a.author_surname = :surname",
+            nativeQuery = true)
+    List<Publication> findPublicationByAuthor(@Param("name") String name, @Param("surname") String surname);
+
 }

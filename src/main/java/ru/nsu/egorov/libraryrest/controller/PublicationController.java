@@ -86,4 +86,10 @@ public class PublicationController {
         return new ResponseEntity<>(publicationService.findPublicationByTitle(title), HttpStatus.OK);
     }
 
+    @GetMapping("/author")
+    public ResponseEntity<List<Publication>> findPublicationByAuthor(
+            @RequestParam String name, @RequestParam String surname) {
+        return new ResponseEntity<>(publicationService.findPublicationByAuthor(name, surname), HttpStatus.OK);
+    }
+
 }
