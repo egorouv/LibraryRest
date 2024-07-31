@@ -61,9 +61,24 @@ public class PublicationController {
     }
 
     @GetMapping("/library")
-    public ResponseEntity<List<Publication>> findPublicationByLibrary(@RequestParam Integer library,
-                                                                      @RequestParam Integer shelf) {
+    public ResponseEntity<List<Publication>> findPublicationByLibrary(
+            @RequestParam Integer library,
+            @RequestParam Integer shelf) {
         return new ResponseEntity<>(publicationService.findPublicationByLibrary(library, shelf), HttpStatus.OK);
+    }
+
+    @GetMapping("/replenishment")
+    public ResponseEntity<List<Publication>> findReplenishmentByDate(
+            @RequestParam @DateTimeFormat(pattern = "yyyy-mm-dd") Date startDate,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-mm-dd") Date endDate) {
+        return new ResponseEntity<>(publicationService.findReplenishmentByDate(startDate, endDate), HttpStatus.OK);
+    }
+
+    @GetMapping("/write-off")
+    public ResponseEntity<List<Publication>> findWriteOffByDate(
+            @RequestParam @DateTimeFormat(pattern = "yyyy-mm-dd") Date startDate,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-mm-dd") Date endDate) {
+        return new ResponseEntity<>(publicationService.findWriteOffByDate(startDate, endDate), HttpStatus.OK);
     }
 
 }

@@ -55,4 +55,12 @@ public class PublicationService {
         return publicationRepository.findPublicationByLibrary(library, shelf);
     }
 
+    public List<Publication> findReplenishmentByDate(Date startDate, Date endDate) {
+        return publicationRepository.findReplenishmentByDate(startDate, endDate);
+    }
+
+    public List<Publication> findWriteOffByDate(Date startDate, Date endDate) {
+        return publicationRepository.findWriteOffByDate(startDate, endDate);
+    }
+
 }

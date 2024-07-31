@@ -53,4 +53,24 @@ public interface PublicationRepository extends JpaRepository<Publication, Long> 
             nativeQuery = true)
     List<Publication> findPublicationByLibrary(@Param("library") Integer library, @Param("shelf") Integer shelf);
 
+    @Query(value =
+            "select p.* " +
+            "from publication p " +
+            "where p.id in " +
+                    "(select publication " +
+                    "from replenishment " +
+                    "where replenishment_date between :startDate and :endDate)",
+            nativeQuery = true)
+    List<Publication> findReplenishmentByDate(@Param("startDate") Date startDate, @Param("endDate") Date endDate);
+
+    @Query(value =
+            "select p.* " +
+            "from publication p " +
+            "where p.id in " +
+                    "(select publication " +
+                    "from write_off " +
+                    "where write_off_date between :startDate and :endDate)",
+            nativeQuery = true)
+    List<Publication> findWriteOffByDate(@Param("startDate") Date startDate, @Param("endDate") Date endDate);
+
 }
