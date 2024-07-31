@@ -81,4 +81,9 @@ public class PublicationController {
         return new ResponseEntity<>(publicationService.findWriteOffByDate(startDate, endDate), HttpStatus.OK);
     }
 
+    @GetMapping("/title")
+    public ResponseEntity<List<Publication>> findPublicationByTitle(@RequestParam String title) {
+        return new ResponseEntity<>(publicationService.findPublicationByTitle(title), HttpStatus.OK);
+    }
+
 }

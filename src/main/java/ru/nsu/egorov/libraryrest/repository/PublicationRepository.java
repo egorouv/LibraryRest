@@ -73,4 +73,13 @@ public interface PublicationRepository extends JpaRepository<Publication, Long> 
             nativeQuery = true)
     List<Publication> findWriteOffByDate(@Param("startDate") Date startDate, @Param("endDate") Date endDate);
 
+    @Query(value =
+            "select p.* " +
+            "from publication p " +
+            "join publication_description pd on p.description = pd.id " +
+            "join publication_title pt on pd.title = pt.id " +
+            "where pt.title = :title",
+            nativeQuery = true)
+    List<Publication> findPublicationByTitle(@Param("title") String title);
+
 }

@@ -63,4 +63,8 @@ public class PublicationService {
         return publicationRepository.findWriteOffByDate(startDate, endDate);
     }
 
+    public List<Publication> findPublicationByTitle(String title) {
+        return publicationRepository.findPublicationByTitle(title);
+    }
+
 }
